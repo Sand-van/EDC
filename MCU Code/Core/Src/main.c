@@ -118,12 +118,12 @@ int main(void)
     /* USER CODE BEGIN WHILE */
     while (1)
     {
-            if(isReceiveFlag == 1)
-            {
-                isReceiveFlag = 0;
-                printf("%s", receiveStrBuffer);
-                pReceiveStrBuffer = 0;
-            }
+        if (isReceiveFlag == 1)
+        {
+            isReceiveFlag = 0;
+            printf("%s", receiveStrBuffer);
+            pReceiveStrBuffer = 0;
+        }
         /* USER CODE END WHILE */
         /* USER CODE BEGIN 3 */
     }
