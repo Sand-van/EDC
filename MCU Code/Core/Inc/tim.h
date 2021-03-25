@@ -40,7 +40,7 @@ extern TIM_HandleTypeDef htim6;
 void MX_TIM6_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void sinFrequencyAdjust(uint32_t Frequency);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

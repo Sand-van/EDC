@@ -34,7 +34,8 @@ extern "C" {
 extern DAC_HandleTypeDef hdac;
 
 /* USER CODE BEGIN Private defines */
-
+#define POINT_NUM 48
+extern uint16_t Sine12bit[POINT_NUM];
 /* USER CODE END Private defines */
 
 void MX_DAC_Init(void);

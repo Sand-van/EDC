@@ -108,6 +108,8 @@ int main(void)
     MX_TIM6_Init();
     /* USER CODE BEGIN 2 */
     HAL_UART_Receive_IT(&huart1, receiveStrBuffer, 1);
+    HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_1, (uint32_t *)Sine12bit, POINT_NUM, DAC_ALIGN_12B_R);
+    sinFrequencyAdjust(1000);
     /* USER CODE END 2 */
 
     /* Infinite loop */
