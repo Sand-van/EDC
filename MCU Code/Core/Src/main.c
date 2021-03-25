@@ -21,6 +21,7 @@
 #include "main.h"
 #include "dac.h"
 #include "dma.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -65,11 +66,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
     pReceiveStrBuffer++;
     HAL_UART_Receive_IT(huart, &receiveStrBuffer[pReceiveStrBuffer], 1);
-    if(receiveStrBuffer[pReceiveStrBuffer - 1]=='\n')
-        {
-            isReceiveFlag = 1;
-            receiveStrBuffer[pReceiveStrBuffer] = '\0';
-        }
+    if (receiveStrBuffer[pReceiveStrBuffer - 1] == '\n')
+    {
+        isReceiveFlag = 1;
+        receiveStrBuffer[pReceiveStrBuffer] = '\0';
+    }
 }
 /* USER CODE END 0 */
 
@@ -104,6 +105,7 @@ int main(void)
     MX_DMA_Init();
     MX_DAC_Init();
     MX_USART1_UART_Init();
+    MX_TIM6_Init();
     /* USER CODE BEGIN 2 */
     HAL_UART_Receive_IT(&huart1, receiveStrBuffer, 1);
     /* USER CODE END 2 */
@@ -112,15 +114,14 @@ int main(void)
     /* USER CODE BEGIN WHILE */
     while (1)
     {
-        /* USER CODE END WHILE */
             if(isReceiveFlag == 1)
             {
                 isReceiveFlag = 0;
                 printf("%s", receiveStrBuffer);
                 pReceiveStrBuffer = 0;
             }
-
-            /* USER CODE BEGIN 3 */
+        /* USER CODE END WHILE */
+        /* USER CODE BEGIN 3 */
     }
     /* USER CODE END 3 */
 }

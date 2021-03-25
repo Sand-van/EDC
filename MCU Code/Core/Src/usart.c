@@ -130,7 +130,6 @@ void Usart1_SendString(uint8_t *str)
 
 int fputc(int ch, FILE *f)
 {
-	/* ·¢ËÍÒ»¸ö×Ö½ÚÊý¾Ýµ½´®¿ÚDEBUG_USART */
 	HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 1000);	
 	
 	return (ch);
