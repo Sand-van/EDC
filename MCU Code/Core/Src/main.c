@@ -72,6 +72,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
         receiveStrBuffer[pReceiveStrBuffer] = '\0';
     }
 }
+
+//
 /* USER CODE END 0 */
 
 /**
