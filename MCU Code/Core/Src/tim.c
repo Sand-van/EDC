@@ -44,7 +44,7 @@ void MX_TIM6_Init(void)
     htim6.Instance = TIM6;
     htim6.Init.Prescaler = 0;
     htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
-    htim6.Init.Period = 1500 - 1;
+    htim6.Init.Period = 19;
     htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
     if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
     {
@@ -95,6 +95,11 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef *tim_baseHandle)
 
 /* USER CODE BEGIN 1 */
 
+/**
+ * @brief 改变输出sin信号的频率
+ * @param Frequency 要修改成的频率
+ * @return none
+ */
 void sinFrequencyAdjust(uint32_t Frequency)
 {
     htim6.Init.Period = 1500000 / Frequency - 1;

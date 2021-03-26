@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    tim.h
+  * @file    adc.h
   * @brief   This file contains all the function prototypes for
-  *          the tim.c file
+  *          the adc.c file
   ******************************************************************************
   * @attention
   *
@@ -17,8 +17,8 @@
   ******************************************************************************
   */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __TIM_H__
-#define __TIM_H__
+#ifndef __ADC_H__
+#define __ADC_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -31,23 +31,22 @@ extern "C" {
 
 /* USER CODE END Includes */
 
-extern TIM_HandleTypeDef htim6;
+extern ADC_HandleTypeDef hadc1;
 
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 
-void MX_TIM6_Init(void);
+void MX_ADC1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
-void sinFrequencyAdjust(uint32_t Frequency);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __TIM_H__ */
+#endif /* __ADC_H__ */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

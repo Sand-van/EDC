@@ -23,8 +23,8 @@
 /* USER CODE BEGIN 0 */
 
 uint16_t Sine12bit[POINT_NUM] = {
-    124, 141, 157, 173, 187, 201, 213, 224, 233, 240, 245, 248, 248, 247, 
-    243, 237, 229, 219, 207, 194, 180, 165, 149, 132, 116, 99, 83, 68, 54, 
+    124, 141, 157, 173, 187, 201, 213, 224, 233, 240, 245, 248, 248, 247,
+    243, 237, 229, 219, 207, 194, 180, 165, 149, 132, 116, 99, 83, 68, 54,
     41, 29, 20, 12, 6, 2, 0, 1, 3, 8, 15, 24, 35, 47, 61, 76, 91, 108, 124};
 
 /* USER CODE END 0 */
@@ -94,7 +94,7 @@ void HAL_DAC_MspInit(DAC_HandleTypeDef *dacHandle)
         hdma_dac_ch1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
         hdma_dac_ch1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
         hdma_dac_ch1.Init.Mode = DMA_CIRCULAR;
-        hdma_dac_ch1.Init.Priority = DMA_PRIORITY_LOW;
+        hdma_dac_ch1.Init.Priority = DMA_PRIORITY_HIGH;
         if (HAL_DMA_Init(&hdma_dac_ch1) != HAL_OK)
         {
             Error_Handler();
