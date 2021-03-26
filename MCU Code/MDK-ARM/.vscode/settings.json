@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "bsp_debug_usart.h": "c",
+        "fstream": "cpp",
+        "dac.h": "c",
+        "dma.h": "c",
+        "tim.h": "c",
+        "gpio.h": "c",
+        "main.h": "c"
+    }
+}
