@@ -51,9 +51,12 @@
 uint8_t receiveStrBuffer[100];
 uint8_t pReceiveStrBuffer = 0;
 uint8_t isReceiveFlag = 0;
+uint8_t pADC_MaxValue;
 
-uint32_t ADC_ReceiveData[1]; //16进制，寄存器内的值
-float ADC_Vol[1];            //10进制，实际电压，便于阅读;  ADC_Vol =(float) ADC_ReceiveData/4096*(float)3.3
+uint32_t ADC_ReceiveData[2]; //16进制，寄存器内的值
+uint32_t ADC_MaxValue[2];
+float ADC_Vol[2];            //10进制，实际电压，便于阅读;  ADC_Vol =(float) ADC_ReceiveData/4096*(float)3.3
+uint32_t samplingTimes = 0;     //
 
 /* USER CODE END PV */
 
@@ -74,6 +77,14 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     {
         isReceiveFlag = 1;
         receiveStrBuffer[pReceiveStrBuffer] = '\0';
+    }
+}
+
+void compareAndGetMaxValue(uint32_t *beCompared, uint32_t *toCompare)
+{
+    if(*beCompared < *toCompare)
+    {
+        *beCompared = *toCompare;
     }
 }
 
@@ -113,6 +124,7 @@ int main(void)
     MX_TIM6_Init();
     MX_ADC1_Init();
     /* USER CODE BEGIN 2 */
+    HAL_TIM_Base_Start(&htim6);
     HAL_UART_Receive_IT(&huart1, receiveStrBuffer, 1);
     HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_1, (uint32_t *)Sine12bit, POINT_NUM, DAC_ALIGN_12B_R);
     sinFrequencyAdjust(1000);
@@ -129,6 +141,22 @@ int main(void)
             printf("%s", receiveStrBuffer);
             pReceiveStrBuffer = 0;
         }
+
+        for (pADC_MaxValue = 0; pADC_MaxValue <= 2; pADC_MaxValue++)
+        {
+            compareAndGetMaxValue(ADC_MaxValue, ADC_ReceiveData);
+        }
+        samplingTimes++;
+        if (samplingTimes>=100000)  //TODO:数字需计算
+        {
+            for (pADC_MaxValue = 0; pADC_MaxValue <= 2; pADC_MaxValue++)
+            {
+                ADC_Vol[pADC_MaxValue] = (float)ADC_MaxValue[pADC_MaxValue] / 4096 * (float)3.3;
+                ADC_MaxValue[pADC_MaxValue] = 0;
+            }
+            samplingTimes = 0;
+        }
+
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */

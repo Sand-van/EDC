@@ -48,7 +48,7 @@ void MX_ADC1_Init(void)
     hadc1.Init.DiscontinuousConvMode = DISABLE;
     hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
     hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-    hadc1.Init.NbrOfConversion = 2;
+    hadc1.Init.NbrOfConversion = 3;
     if (HAL_ADC_Init(&hadc1) != HAL_OK)
     {
         Error_Handler();
@@ -70,6 +70,14 @@ void MX_ADC1_Init(void)
     {
         Error_Handler();
     }
+    /** Configure Regular Channel
+  */
+    sConfig.Channel = ADC_CHANNEL_10;
+    sConfig.Rank = ADC_REGULAR_RANK_3;
+    if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+    {
+        Error_Handler();
+    }
     /* USER CODE BEGIN ADC1_Init 2 */
 
     /* USER CODE END ADC1_Init 2 */
@@ -87,11 +95,17 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *adcHandle)
         /* ADC1 clock enable */
         __HAL_RCC_ADC1_CLK_ENABLE();
 
+        __HAL_RCC_GPIOC_CLK_ENABLE();
         __HAL_RCC_GPIOA_CLK_ENABLE();
         /**ADC1 GPIO Configuration
+    PC0     ------> ADC1_IN10
     PA0-WKUP     ------> ADC1_IN0
     PA6     ------> ADC1_IN6
     */
+        GPIO_InitStruct.Pin = GPIO_PIN_0;
+        GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+        HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
         GPIO_InitStruct.Pin = GPIO_PIN_0 | GPIO_PIN_6;
         GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
         HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -131,9 +145,12 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef *adcHandle)
         __HAL_RCC_ADC1_CLK_DISABLE();
 
         /**ADC1 GPIO Configuration
+    PC0     ------> ADC1_IN10
     PA0-WKUP     ------> ADC1_IN0
     PA6     ------> ADC1_IN6
     */
+        HAL_GPIO_DeInit(GPIOC, GPIO_PIN_0);
+
         HAL_GPIO_DeInit(GPIOA, GPIO_PIN_0 | GPIO_PIN_6);
 
         /* ADC1 DMA DeInit */
