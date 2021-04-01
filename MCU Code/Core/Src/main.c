@@ -29,6 +29,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "bsp_dataManage.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,12 +53,12 @@
 uint8_t receiveStrBuffer[100];
 uint8_t pReceiveStrBuffer = 0;
 uint8_t isReceiveFlag = 0;
-uint8_t pADC_MaxValue;
 
+uint8_t pADC_MaxValue;
 uint32_t ADC_ReceiveData[2]; //16进制，寄存器内的值
 uint32_t ADC_MaxValue[2];
-float ADC_Vol[2];            //10进制，实际电压，便于阅读;  ADC_Vol =(float) ADC_ReceiveData/4096*(float)3.3
-uint32_t samplingTimes = 0;     //
+float ADC_Vol[2];           //10进制，实际电压，便于阅读;  ADC_Vol =(float) ADC_ReceiveData/4096*(float)3.3
+uint32_t samplingTimes = 0; //
 
 /* USER CODE END PV */
 
@@ -80,13 +82,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     }
 }
 
-void compareAndGetMaxValue(uint32_t *beCompared, uint32_t *toCompare)
-{
-    if(*beCompared < *toCompare)
-    {
-        *beCompared = *toCompare;
-    }
-}
+
 
 /* USER CODE END 0 */
 
@@ -147,11 +143,12 @@ int main(void)
             compareAndGetMaxValue(ADC_MaxValue, ADC_ReceiveData);
         }
         samplingTimes++;
-        if (samplingTimes>=100000)  //TODO:数字需计算
+        if (samplingTimes >= 100000) //TODO:数字需计算
         {
             for (pADC_MaxValue = 0; pADC_MaxValue <= 2; pADC_MaxValue++)
             {
                 ADC_Vol[pADC_MaxValue] = (float)ADC_MaxValue[pADC_MaxValue] / 4096 * (float)3.3;
+                printf("%f\n", ADC_Vol[pADC_MaxValue]);
                 ADC_MaxValue[pADC_MaxValue] = 0;
             }
             samplingTimes = 0;

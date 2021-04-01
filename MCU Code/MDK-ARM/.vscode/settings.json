@@ -6,6 +6,9 @@
         "dma.h": "c",
         "tim.h": "c",
         "gpio.h": "c",
-        "main.h": "c"
-    }
+        "main.h": "c",
+        "bsp_datamanage.h": "c",
+        "stm32f1xx_hal.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Enabled"
 }

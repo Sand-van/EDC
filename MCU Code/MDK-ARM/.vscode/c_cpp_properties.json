@@ -3,17 +3,17 @@
         {
             "name": "MCU Code",
             "includePath": [
-                "c:\\Users\\Sand-\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\Core\\Inc",
-                "c:\\Users\\Sand-\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\Drivers\\STM32F1xx_HAL_Driver\\Inc",
-                "c:\\Users\\Sand-\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\Drivers\\STM32F1xx_HAL_Driver\\Inc\\Legacy",
-                "c:\\Users\\Sand-\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\Drivers\\CMSIS\\Device\\ST\\STM32F1xx\\Include",
-                "c:\\Users\\Sand-\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\Drivers\\CMSIS\\Include",
-                "c:\\Users\\Sand-\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\User",
-                "C:\\Program Files\\Keil\\ARM\\ARMCC\\include",
-                "C:\\Program Files\\Keil\\ARM\\ARMCC\\include\\rw",
-                "c:\\Users\\Sand-\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\MDK-ARM",
-                "c:\\Users\\Sand-\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\Core\\Src",
-                "c:\\Users\\Sand-\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\Drivers\\STM32F1xx_HAL_Driver\\Src"
+                "g:\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\Core\\Inc",
+                "g:\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\Drivers\\STM32F1xx_HAL_Driver\\Inc",
+                "g:\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\Drivers\\STM32F1xx_HAL_Driver\\Inc\\Legacy",
+                "g:\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\Drivers\\CMSIS\\Device\\ST\\STM32F1xx\\Include",
+                "g:\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\Drivers\\CMSIS\\Include",
+                "g:\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\User",
+                "C:\\Program Files\\Keil_v5\\ARM\\ARMCC\\include",
+                "C:\\Program Files\\Keil_v5\\ARM\\ARMCC\\include\\rw",
+                "g:\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\MDK-ARM",
+                "g:\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\Core\\Src",
+                "g:\\OneDrive\\MCU\\STM32\\2019D\\MCU Code\\Drivers\\STM32F1xx_HAL_Driver\\Src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",
