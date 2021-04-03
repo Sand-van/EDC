@@ -10,6 +10,7 @@
 #define __BSP_DATAMANAGE_H
 
 #include "stdint.h"
+#include <stdio.h>
 #include "stm32f1xx_hal.h"
 #include "tim.h"
 
@@ -27,7 +28,7 @@
 #define LOAD_RESISTANCE     5000    //¸ºÔØµç×è
 
 void compareAndGetMaxValue(uint32_t *beCompared, uint32_t *toCompare);
-void refreshADC_MaxValue();
-void getADC_MaxValue();
+void refreshADC_MaxValue(void);
+void getADC_MaxValue(void);
 
 #endif

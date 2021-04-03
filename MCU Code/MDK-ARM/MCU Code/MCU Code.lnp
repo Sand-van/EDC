@@ -1,6 +1,6 @@
 --cpu Cortex-M3
 "mcu code\startup_stm32f103xe.o"
-"mcu code\bsp_debug_usart.o"
+"mcu code\bsp_datamanage.o"
 "mcu code\main.o"
 "mcu code\gpio.o"
 "mcu code\adc.o"

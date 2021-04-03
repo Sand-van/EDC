@@ -1,16 +1,16 @@
 /*
  * @Author: Chao
  * @Date: 2021-03-22 22:44:47
- * @LastEditTime: 2021-03-22 22:49:27
+ * @LastEditTime: 2021-04-03 21:33:58
  * @Description:  
  */
 
 #include "bsp_dataManage.h"
 
 extern uint8_t pADC_MaxValue;
-extern uint32_t ADC_ReceiveData[2]; //16进制，寄存器内的值
-extern uint32_t ADC_MaxValue[2];
-extern float ADC_Vol[2]; //10进制，实际电压，便于阅读;  ADC_Vol =(float) ADC_ReceiveData/4096*(float)3.3
+extern uint32_t ADC_ReceiveData[3]; //16进制，寄存器内的值
+extern uint32_t ADC_MaxValue[3];
+extern float ADC_Vol[3]; //10进制，实际电压，便于阅读;  ADC_Vol =(float) ADC_ReceiveData/4096*(float)3.3
 
 /**
  * @brief  打擂台获得最大值
@@ -32,8 +32,9 @@ void refreshADC_MaxValue()
 {
     for (pADC_MaxValue = 0; pADC_MaxValue <= 2; pADC_MaxValue++)
     {
-        ADC_Vol[pADC_MaxValue] = (float)ADC_MaxValue[pADC_MaxValue] / 4096 * (float)3.3;
+        ADC_Vol[pADC_MaxValue] = (float)ADC_MaxValue[pADC_MaxValue]  * (float)3.3 / 4096;
         ADC_MaxValue[pADC_MaxValue] = 0;
+        printf("%f\n", ADC_Vol[pADC_MaxValue]);
     }
 }
 
@@ -47,7 +48,7 @@ void getADC_MaxValue()
     {
         for (pADC_MaxValue = 0; pADC_MaxValue <= 2; pADC_MaxValue++)
         {
-            compareAndGetMaxValue(ADC_MaxValue, ADC_ReceiveData);
+            compareAndGetMaxValue(&ADC_MaxValue[pADC_MaxValue], &ADC_ReceiveData[pADC_MaxValue]);
         }
     }
     refreshADC_MaxValue();
