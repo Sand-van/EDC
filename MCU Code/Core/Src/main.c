@@ -124,7 +124,7 @@ int main(void)
     sinFrequencyAdjust(1000);
     HAL_ADC_Start_DMA(&hadc1, ADC_ReceiveData, 3);
     /* USER CODE END 2 */
-    uint32_t i;
+
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
     while (1)
